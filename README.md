@@ -1,24 +1,24 @@
-# Gormlinq
+# Gorm-linq
 
-Gormlinq is a library that provides a LINQ-like interface for the GORM ORM library. It allows you to write more expressive queries and perform common database operations in a more concise and readable way.
+Gorm-linq is a library that provides a LINQ-like interface for the GORM ORM library. It allows you to write more expressive queries and perform common database operations in a more concise and readable way.
 
 ## Installation
 
-To install Gormlinq, use `go get`:
+To install Gorm-linq, use `go get`:
 
 ```
-go get github.com/STRockefeller/gormlinq
+go get github.com/STRockefeller/gorm-linq
 ```
 
 ## Usage
 
-First, import the `gormlinq` package:
+First, import the `linq` package:
 
 ```go
-import "github.com/STRockefeller/gormlinq"
+import "github.com/STRockefeller/gorm-linq"
 ```
 
-Then, create a new `gorm.DB` instance and pass it to `gormlinq.NewDB` along with the struct type you want to work with:
+Then, create a new `gorm.DB` instance and pass it to `linq.NewDB` along with the struct type you want to work with:
 
 ```go
 db, err := gorm.Open(mysql.Open("dsn"), &gorm.Config{})
@@ -31,10 +31,10 @@ type User struct {
     Name string
 }
 
-users := gormlinq.NewDB[User](db)
+users := linq.NewDB[User](db)
 ```
 
-You can then use `gormlinq` methods to query the database:
+You can then use `gorm-linq` methods to query the database:
 
 ```go
 // Find all users where Name starts with "A"
@@ -53,10 +53,10 @@ rowsAffected, err := users.Delete(context.Background(), User{Name: "A%"})
 
 // Find all users for update
 var result linq.Linq[User]
-err := users.FindForUpdate(context.Background(), gormlinq.NoWait(), &result)
+err := users.FindForUpdate(context.Background(), linq.NoWait(), &result)
 ```
 
-You can also chain multiple `gormlinq` methods together to build more complex queries:
+You can also chain multiple `gorm-linq` methods together to build more complex queries:
 
 ```go
 // Find all users where Name starts with "A" and ID is less than 100, ordered by Name
@@ -64,7 +64,7 @@ var result linq.Linq[User]
 err := users.Where(User{Name: "A%"}).WhereRaw("ID < ?", 100).Order("Name").Find(context.Background(), &result)
 ```
 
-`gormlinq` also supports upserts:
+`gorm-linq` also supports upserts:
 
 ```go
 // Upsert a single user
@@ -74,7 +74,7 @@ err := users.Upsert(context.Background(), []User{{ID: 42, Name: "NewName"}}, cla
 })
 ```
 
-You can also use `gormlinq` with GORM's `Scope` method to apply a function to the underlying `gorm.DB` instance:
+You can also use `gorm-linq` with GORM's `Scope` method to apply a function to the underlying `gorm.DB` instance:
 
 ```go
 users.Scope(func(db *gorm.DB) *gorm.DB {
@@ -84,4 +84,4 @@ users.Scope(func(db *gorm.DB) *gorm.DB {
 
 ## License
 
-Gormlinq is released under the MIT License. See LICENSE file for details.
+Gorm-linq is released under the MIT License. See LICENSE file for details.

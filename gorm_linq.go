@@ -1,4 +1,4 @@
-package gormlinq
+package linq
 
 import (
 	"context"

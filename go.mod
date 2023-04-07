@@ -1,4 +1,4 @@
-module github.com/STRockefeller/gormlinq
+module github.com/STRockefeller/gorm-linq
 
 go 1.18
 
