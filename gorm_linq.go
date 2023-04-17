@@ -17,7 +17,7 @@ func NewDB[T linq.LinqableType](db *gorm.DB) DB[T] {
 	return DB[T]{db: db.Model(new(T))}
 }
 
-func (container DB[T]) Create(ctx context.Context, instances []T) error {
+func (container DB[T]) Create(ctx context.Context, instances ...T) error {
 	return container.db.WithContext(ctx).Create(&instances).Error
 }
 
@@ -105,7 +105,7 @@ func (container DB[T]) TakeForUpdate(ctx context.Context, opts ...forUpdateOptio
 	return container.ForUpdate(opts...).Take(ctx)
 }
 
-func (container DB[T]) Upsert(ctx context.Context, instances []T, clause clause.OnConflict) error {
+func (container DB[T]) Upsert(ctx context.Context, clause clause.OnConflict, instances ...T) error {
 	return container.db.WithContext(ctx).Clauses(clause).Create(&instances).Error
 }
 
