@@ -9,11 +9,11 @@ import (
 	"github.com/STRockefeller/go-linq"
 )
 
-type DB[T linq.LinqableType] struct {
+type DB[T any] struct {
 	db *gorm.DB
 }
 
-func NewDB[T linq.LinqableType](db *gorm.DB) DB[T] {
+func NewDB[T any](db *gorm.DB) DB[T] {
 	return DB[T]{db: db.Model(new(T))}
 }
 
@@ -21,9 +21,18 @@ func (container DB[T]) Create(ctx context.Context, instances ...T) error {
 	return container.db.WithContext(ctx).Create(&instances).Error
 }
 
-func (container DB[T]) Delete(ctx context.Context, condition T) (rawsAffected int64, err error) {
+func (container DB[T]) DeleteWithCondition(ctx context.Context, condition T) (rawsAffected int64, err error) {
 	res := container.db.WithContext(ctx).Delete(&condition)
 	return res.RowsAffected, res.Error
+}
+
+func (container DB[T]) Delete(ctx context.Context) (rawsAffected int64, err error) {
+	return container.DeleteWithCondition(ctx, *new(T))
+}
+
+func (container DB[T]) SelectRaw(selectedColumns string) DB[T] {
+	container.db = container.db.Select(selectedColumns)
+	return container
 }
 
 func (container DB[T]) Where(condition T) DB[T] {
