@@ -6,7 +6,8 @@ import (
 	"github.com/STRockefeller/go-linq"
 )
 
-func (container DB[T]) SelectRaw(selectedColumns string) DB[T] {
+// SelectRaw is a method defined in the DB struct. It takes a string slice parameter selectedColumns and returns the modified DB object.
+func (container DB[T]) SelectRaw(selectedColumns []string) DB[T] {
 	container.db = container.db.Select(selectedColumns)
 	return container
 }
