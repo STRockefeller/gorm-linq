@@ -38,3 +38,19 @@ func parseForUpdateOptions(opts ...forUpdateOption) (res forUpdateOptions) {
 	}
 	return
 }
+
+func parseLockOption(opt LockOption) []forUpdateOption {
+	switch opt {
+	case OptionNoWait:
+		return []forUpdateOption{NoWait()}
+	default:
+		return []forUpdateOption{}
+	}
+}
+
+func (container DB[M]) LockByRequest(req LockableRequest) DB[M] {
+	if req.Lock() {
+		return container.ForUpdate(parseLockOption(req.LockOption())...)
+	}
+	return container
+}
