@@ -11,13 +11,18 @@ type DB[T any] struct {
 
 // NewDB creates a new instance of 'DB' by initializing the 'db' field with the provided 'gorm.DB' instance.
 func NewDB[T any](db *gorm.DB) DB[T] {
+	if db == nil {
+		return DB[T]{}
+	}
 	return DB[T]{db: db.Model(new(T))}
 }
 
 // Scope applies a scope to the query by calling the provided function 'f' with the 'db' field as an argument.
 // It returns the modified 'DB' instance.
 func (container DB[T]) Scope(f func(*gorm.DB) *gorm.DB) DB[T] {
-	container.db = f(container.db)
+	if f != nil {
+		container.db = f(container.db)
+	}
 	return container
 }
 
