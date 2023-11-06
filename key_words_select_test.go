@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/STRockefeller/go-linq"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -44,7 +45,7 @@ func TestFindMethodReturnsLinqAndError(t *testing.T) {
 
 	// Assert
 	assert.Equal(expectedError, err)
-	assert.Nil(result)
+	assert.Equal(linq.New([]TestTable{}), result)
 	assert.NoError(mock.ExpectationsWereMet())
 }
 
@@ -242,7 +243,7 @@ func TestFindForUpdateWithError(t *testing.T) {
 
 	// Assert
 	assert.Error(err)
-	assert.Nil(result)
+	assert.Equal(linq.New([]TestTable{}), result)
 	assert.NoError(mock.ExpectationsWereMet())
 }
 

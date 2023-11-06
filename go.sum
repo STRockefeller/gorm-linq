@@ -2,6 +2,10 @@ github.com/DATA-DOG/go-sqlmock v1.5.0 h1:Shsta01QNfFxHCfpW6YH2STWB0MudeXXEWMr20O
 github.com/DATA-DOG/go-sqlmock v1.5.0/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
 github.com/STRockefeller/go-linq v1.0.4 h1:TtdAgP7NxUgqWkhA3OutFzu5BFscyX8VtWV/W3ciS7A=
 github.com/STRockefeller/go-linq v1.0.4/go.mod h1:GQLV5YGvBKOgQm8j741ejisjpWXWDCieynSSN3yZxPE=
+github.com/STRockefeller/go-linq v1.1.1 h1:R/VlCM7QVNptZy1tMPZcBBOOruFz9twgwLwd+rT8Zzc=
+github.com/STRockefeller/go-linq v1.1.1/go.mod h1:GQLV5YGvBKOgQm8j741ejisjpWXWDCieynSSN3yZxPE=
+github.com/STRockefeller/go-linq v1.2.0 h1:M/6ee0X9H7/MQ9GgBSpxi5FvFad/qSnc4fVq7KPPocs=
+github.com/STRockefeller/go-linq v1.2.0/go.mod h1:GQLV5YGvBKOgQm8j741ejisjpWXWDCieynSSN3yZxPE=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/go-sql-driver/mysql v1.7.0 h1:ueSltNNllEqE3qcWBTD0iQd3IpL/6U+mJxLkazJ7YPc=

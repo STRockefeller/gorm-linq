@@ -13,16 +13,20 @@ func (container DB[T]) SelectRaw(selectedColumns []string) DB[T] {
 }
 
 func (container DB[T]) Find(ctx context.Context) (result linq.Linq[T], err error) {
-	err = container.db.WithContext(ctx).Find(&result).Error
+	items := []T{}
+	err = container.db.WithContext(ctx).Find(&items).Error
+	result = linq.New(items)
 	return
 }
 
 // panics if something went wrong
 func (container DB[T]) FindWithoutError(ctx context.Context) (result linq.Linq[T]) {
-	err := container.db.WithContext(ctx).Find(&result).Error
+	items := []T{}
+	err := container.db.WithContext(ctx).Find(&items).Error
 	if err != nil {
 		panic(err.Error())
 	}
+	result = linq.New(items)
 	return
 }
 
@@ -40,6 +44,6 @@ func (container DB[T]) TakeForUpdate(ctx context.Context, opts ...forUpdateOptio
 }
 
 func (container DB[T]) Distinct(columns []string) DB[T] {
-	container.db = container.db.Distinct(linq.Select(columns, func(c string) any { return c })...)
+	container.db = container.db.Distinct(linq.Select(columns, func(c string) any { return c }).ToSlice()...)
 	return container
 }

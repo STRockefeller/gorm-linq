@@ -71,6 +71,6 @@ func TestGroupElementsWithOneDistinctValue(t *testing.T) {
 
 	// Assert
 	assert.NoError(err)
-	assert.Equal(linq.NewLinq([]TestTable{{Column1: "hello", Column2: "world"}, {Column1: "hello", Column2: "kitty"}}), result)
+	assert.Equal(linq.New([]TestTable{{Column1: "hello", Column2: "world"}, {Column1: "hello", Column2: "kitty"}}), result)
 	assert.NoError(mock.ExpectationsWereMet())
 }
