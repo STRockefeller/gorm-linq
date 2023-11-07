@@ -1,6 +1,6 @@
 # Gorm-linq
 
-[![Coverage Status](https://coveralls.io/repos/github/STRockefeller/gorm-linq/badge.svg)](https://coveralls.io/github/STRockefeller/gorm-linq)
+![license](https://img.shields.io/github/license/STRockefeller/gorm-linq?style=plastic)![code size](https://img.shields.io/github/languages/code-size/STRockefeller/gorm-linq?style=plastic)![open issues](https://img.shields.io/github/issues/STRockefeller/gorm-linq?style=plastic)![closed issues](https://img.shields.io/github/issues-closed/STRockefeller/gorm-linq?style=plastic)![go version](https://img.shields.io/github/go-mod/go-version/STRockefeller/gorm-linq?style=plastic)![latest version](https://img.shields.io/github/v/tag/STRockefeller/gorm-linq?style=plastic)[![Go Report Card](https://goreportcard.com/badge/github.com/STRockefeller/gorm-linq)](https://goreportcard.com/report/github.com/STRockefeller/gorm-linq)[![Coverage Status](https://coveralls.io/repos/github/STRockefeller/gorm-linq/badge.svg)](https://coveralls.io/github/STRockefeller/gorm-linq)
 
 Gorm-linq is a library that provides a LINQ-like interface for the GORM ORM library. It allows you to write more expressive queries and perform common database operations in a more concise and readable way.
 
