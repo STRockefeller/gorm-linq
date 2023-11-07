@@ -1,5 +1,7 @@
 # Gorm-linq
 
+[![Coverage Status](https://coveralls.io/repos/github/STRockefeller/gorm-linq/badge.svg)](https://coveralls.io/github/STRockefeller/gorm-linq)
+
 Gorm-linq is a library that provides a LINQ-like interface for the GORM ORM library. It allows you to write more expressive queries and perform common database operations in a more concise and readable way.
 
 ## Installation
